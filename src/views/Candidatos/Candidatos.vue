@@ -10,7 +10,7 @@ import Lateral from '@/components/Menus/Lateral.vue';
 import Topo from '@/components/Menus/Topo.vue';
 
 export default {
-	name: "Home",
+	name: "Candidatos",
 	components: {
 		Lateral,
 		Topo
