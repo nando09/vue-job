@@ -29,7 +29,7 @@ export default {
 </script>
 <style type="text/css">
 	.lateral{
-		background: #046877;
+		/*background: #046877;*/
 		position: fixed;
 		float: left;
 		z-index: 9998;
@@ -37,8 +37,8 @@ export default {
 		margin-top: 7vh;
 		max-width: 4%;
 		height: 93vh;
-		box-shadow: 0px 15px 10px #888888;
-		webkit-box-shadow: 0px 15px 10px #888888;
+		box-shadow: 0px 15px 10px #046877;
+		webkit-box-shadow: 0px 15px 10px #046877;
 /*		webkit-box-shadow: 0 2px 2px 0 rgba(4,104,119,0.14), 0 1px 5px 0 rgba(4,104,119,0.12), 0 3px 1px -2px rgba(4,104,119,0.2);
 		box-shadow: 0 2px 2px 0 rgba(4,104,119,0.14), 0 1px 5px 0 rgba(4,104,119,0.12), 0 3px 1px -2px rgba(4,104,119,0.2);*/
 	}
@@ -51,12 +51,12 @@ export default {
 	li a{
 		display: block;
 		padding: 20px 10px;
-		color: #8bd1dc;
+		color: #046877;
 	}
 
 	li > a:hover > i, li > a:hover{
-		background: #eee;
-		color: #046877;
+		background: #046877;
+		color: white;
 	}
 
 </style>
