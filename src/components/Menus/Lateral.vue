@@ -33,9 +33,9 @@ export default {
 		position: fixed;
 		float: left;
 		z-index: 9998;
-		width: 5%;
+		width: 4%;
 		margin-top: 7vh;
-		max-width: 5%;
+		max-width: 4%;
 		height: 93vh;
 		box-shadow: 0px 15px 10px #888888;
 		webkit-box-shadow: 0px 15px 10px #888888;
@@ -50,7 +50,7 @@ export default {
 
 	li a{
 		display: block;
-		padding: 20px;
+		padding: 20px 10px;
 		color: #8bd1dc;
 	}
 
