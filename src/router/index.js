@@ -1,5 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import EmptyViewRouter from "@/components/EmptyViewRouter";
+
 import Home from "../views/Home.vue";
 import Index from "../views/Home/Index.vue";
 import Vagas from "../views/Vagas/Vagas.vue";
@@ -23,11 +25,14 @@ const routes = [
   {
     path: "/vagas",
     name: "Vagas",
-    component: Vagas,
+    component: EmptyViewRouter,
     children: [
         {
+          path: "/",
+          component: Vagas
+        },
+        {
           path: "candidatos",
-          name: "Candidatos",
           component: Candidatos
         }
     ]
