@@ -2,7 +2,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Index from '../views/Home/Index.vue';
-import Candidatos from '../views/Candidatos/Candidatos.vue';
+import Vagas from '../views/Vagas/Vagas.vue';
+import Candidatos from '../views/Vagas/Candidatos.vue';
 import Configuracao from '../views/Configuracao/Configuracao.vue';
 import Curriculos from '../views/Curriculos/Curriculos.vue';
 
@@ -21,16 +22,12 @@ const routes = [
   },
   {
     path: "/vagas",
-    name: "Candidatos",
-    component: Candidatos,
+    name: "Vagas",
+    component: Vagas,
     children: [
         {
           path: 'candidatos',
           name: "Candidatos",
-          component: Candidatos
-        },
-        {
-          path: 'curriculos',
           component: Candidatos
         }
     ]

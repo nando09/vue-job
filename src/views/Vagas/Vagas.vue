@@ -9,10 +9,10 @@
 <script>
 import Lateral from '@/components/Menus/Lateral.vue';
 import Topo from '@/components/Menus/Topo.vue';
-import Index from '@/components/Candidatos/Index.vue';
+import Index from '@/components/Vagas/Index.vue';
 
 export default {
-	name: "Candidatos",
+	name: "Vagas",
 	components: {
 		Lateral,
 		Topo,
