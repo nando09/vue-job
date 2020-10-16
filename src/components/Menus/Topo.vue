@@ -1,5 +1,5 @@
 <template>
-	<b-navbar toggleable="lg" type="dark" variant="info" class="topo">
+	<b-navbar toggleable="lg" type="dark" class="topo">
 		<b-navbar-brand href="#">NavBar</b-navbar-brand>
 
 		<b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -49,6 +49,7 @@ export default {
 </script>
 <style type="text/css">
 	.topo{
+		background-color: #0d545f;
 		position: fixed;
 		height: 7vh;
 		width: 100%;
