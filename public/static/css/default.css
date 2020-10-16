@@ -1,4 +1,4 @@
-li .router-link-exact-active i, li .router-link-exact-active{
+li  .router-link-active i, li  .router-link-active{
 	background: #046877;
 	color: white;
 }

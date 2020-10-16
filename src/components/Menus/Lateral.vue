@@ -2,10 +2,10 @@
 	<div class="lateral">
 		<ul>
 			<li>
-				<router-link class="grey-text text-lighten-3" to="/"><b-icon font-scale="1.4" icon="house-door"></b-icon></router-link>
+				<router-link class="grey-text text-lighten-3" to="/home"><b-icon font-scale="1.4" icon="house-door"></b-icon></router-link>
 			</li>
 			<li>
-				<router-link class="grey-text text-lighten-3" to="/candidatos"><b-icon font-scale="1.4" icon="person-lines-fill"></b-icon></router-link>
+				<router-link class="grey-text text-lighten-3" to="/vagas"><b-icon font-scale="1.4" icon="person-lines-fill"></b-icon></router-link>
 			</li>
 			<li>
 				<router-link class="grey-text text-lighten-3" to="/curriculos"><b-icon font-scale="1.4" icon="journal-plus"></b-icon></router-link>
