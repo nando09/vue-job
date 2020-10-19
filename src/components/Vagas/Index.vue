@@ -5,7 +5,9 @@
 				<b-col v-for="vaga in vagas" :key="vaga.id">
 					<b-card :header="vaga.titulo">
 						<blockquote class="blockquote mb-0">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+							<b-button size="sm" class="mb-2">
+								<b-icon icon="gear-fill" aria-hidden="true"></b-icon> Settings
+							</b-button>
 							<footer class="blockquote-footer">
 								Someone famous in <cite title="Source Title">Source Title</cite>
 							</footer>
