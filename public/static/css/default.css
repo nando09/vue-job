@@ -1,3 +1,36 @@
+/*https://pt.stackoverflow.com/questions/68928/como-estilizar-a-barra-de-rolagem*/
+::-webkit-scrollbar              {
+    width: 10px;
+    background: #eeeeee;
+}
+::-webkit-scrollbar-button       { /* 2 */ }
+::-webkit-scrollbar-track        { /* 3 */ }
+::-webkit-scrollbar-track-piece  { /* 4 */ }
+::-webkit-scrollbar-thumb        {
+	background: #0d545f;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-corner       { /* 6 */ }
+::-webkit-resizer                { /* 7 */ }
+
+::-webkit-scrollbar-button:single-button {
+  background: #eeeeee;
+  color: #0d545f;
+  display: block;
+  border-style: solid;
+  height: 13px;
+  width: 16px;
+}
+
+scrollbar-base-color: #C0C0C0;
+scrollbar-base-color: #C0C0C0;
+scrollbar-3dlight-color: #C0C0C0;
+scrollbar-highlight-color: #C0C0C0;
+scrollbar-track-color: #EBEBEB;
+scrollbar-arrow-color: black;
+scrollbar-shadow-color: #C0C0C0;
+scrollbar-dark-shadow-color: #C0C0C0;
+
 li  .router-link-active i, li  .router-link-active{
 	background: #046877;
 	color: white;
@@ -12,4 +45,5 @@ li  .router-link-active i, li  .router-link-active{
 	height: 93vh;
 	padding: 10px 0;
 	background: #eee;
+	overflow: auto;
 }
