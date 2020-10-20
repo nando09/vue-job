@@ -2,7 +2,7 @@
 	<div class="conteudo">
 		<b-col>
 			<b-row>
-				<b-col v-for="vaga in vagas" :key="vaga.id">
+				<b-col v-for="vaga in vagas" :key="vaga.id" class="vagas-card">
 					<b-card :header="vaga.titulo">
 						<blockquote class="blockquote mb-0">
 							<b-button size="sm" class="mb-2">
@@ -60,32 +60,8 @@ export default {
 };
 </script>
 <style type="text/css">
-	.icon{
-		margin: 0 10px;
-	}
-
-	.candidato{
-		margin-top: 3px;
-	}
-
-	.icon-view{
-		cursor: pointer;
-	}
-
-/*	.card-header{
-		background: #86aaaf;
-	}*/
-
-	.nav-pills .nav-link.active{
-		background: #86aaaf;
-	}
-
-	.comentario{
-		padding: 20px;
-	}
-
-	.objetivo{
-		border-bottom: 2px solid #86aaaf;
+	.vagas-card{
+		margin-bottom: 10px;
 	}
 </style>
 
