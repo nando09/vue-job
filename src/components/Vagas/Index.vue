@@ -9,7 +9,8 @@
 								<b-icon icon="gear-fill" aria-hidden="true"></b-icon> Settings
 							</b-button>
 							<footer class="blockquote-footer">
-								Someone famous in <cite title="Source Title">Source Title</cite>
+								Concorrendo
+								<b-badge>5</b-badge> 
 							</footer>
 						</blockquote>
 					</b-card>
@@ -87,3 +88,9 @@ export default {
 		border-bottom: 2px solid #86aaaf;
 	}
 </style>
+
+<!-- var date1 = new Date("7/11/2010");
+var date2 = new Date("12/12/2010");
+var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+console.log(diffDays); -->
