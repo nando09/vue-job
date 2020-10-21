@@ -8,13 +8,16 @@
 						<b-card-text class="small text-muted">
 							<b-icon icon="info-circle-fill" variant="info" title="Já faz essa quantidade de dias que você publicou essa vaga!" class="icon-info"></b-icon>
 							{{ diasRestantes(vaga.data) }}
+
+
+						<footer class="blockquote-footer">
+							Candidatos: <cite title="Source Title"><b-badge variant="primary" pill v-if="vaga.candidatos_quantidade > 0">{{vaga.candidatos_quantidade}}</b-badge></cite>
+						</footer>
 						</b-card-text>
 						<template #footer>
 							<small class="text-muted">
-								<b-icon icon="diagram2"></b-icon>
-								<b-icon icon="eye-fill"></b-icon>
-								<b-icon icon="view-list"></b-icon>
-								<b-icon icon="view-list"></b-icon>
+								<b-icon icon="x-circle" scale="1.5" variant="danger" class="icon-padrao"></b-icon>
+								<b-icon icon="eye-fill" scale="1.5" class="icon-padrao"></b-icon>
 							</small>
 						</template>
 					</b-card>
@@ -86,6 +89,10 @@ export default {
 
 	.icon-info{
 		margin: 0 5px;
+	}
+
+	.icon-padrao{
+		margin: 0 0.5rem;
 	}
 </style>
 
