@@ -2,34 +2,22 @@
 	<div class="conteudo">
 		<b-col>
 			<b-row>
+				<div class="info-page" v-if="informacao_pagina">
+					<p>Se apagar não volta!</p>
+				</div>
 				<b-col class="vagas-card" md="4" sm="12">
-					<b-card
-						border-variant="primary"
-						header="Primary"
-						header-bg-variant="primary"
-						header-text-variant="white"
-						align="center">
-						<b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+					<b-card align="center" class="card-top" header="Cantidatos" header-text-variant="white" header-bg-variant="info">
+						<b-card-text>Total de: {{candidatos_quantidade}} candidatos</b-card-text>
 					</b-card>
 				</b-col>
 				<b-col class="vagas-card" md="4" sm="12">
-					<b-card
-						border-variant="primary"
-						header="Primary"
-						header-bg-variant="primary"
-						header-text-variant="white"
-						align="center">
-						<b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+					<b-card align="center" class="card-top" header="Vagas ativas" header-text-variant="white" header-bg-variant="info">
+						<b-card-text>Vagas ativas: {{vagas_ativa_quantidade}}</b-card-text>
 					</b-card>
 				</b-col>
 				<b-col class="vagas-card" md="4" sm="12">
-					<b-card
-						border-variant="primary"
-						header="Primary"
-						header-bg-variant="primary"
-						header-text-variant="white"
-						align="center">
-						<b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+					<b-card align="center" class="card-top" header="Informações (clique)" header-text-variant="white" header-bg-variant="info">
+						<b-icon icon="exclamation-circle-fill" class="button-info" scale="2" variant="warning" @click="toggleInfo()"></b-icon>
 					</b-card>
 				</b-col>
 				<b-col v-for="vaga in vagas" :key="vaga.id" class="vagas-card" md="3" sm="6">
@@ -68,7 +56,10 @@ export default {
 	},
 	data () {
 		return {
-			vagas: []
+			vagas: [],
+			candidatos_quantidade: '',
+			vagas_ativa_quantidade: '',
+			informacao_pagina: false
 		}
 	},
 	computed: {
@@ -86,7 +77,9 @@ export default {
 			})
 			.then(response => {
 				console.log(response.data);
-				this.vagas = response.data;
+				this.vagas = response.data.cadastradas;
+				this.candidatos_quantidade = response.data.candidatos_quantidade;
+				this.vagas_ativa_quantidade = response.data.vagas_ativa_quantidade;
 			})
 			.catch(e => {
 				console.log(e);
@@ -129,6 +122,14 @@ export default {
 					)
 				}
 			})
+		},
+
+		toggleInfo(){
+			if (this.informacao_pagina) {
+				this.informacao_pagina = false;
+			}else{
+				this.informacao_pagina = true;
+			}
 		}
 	}
 };
@@ -144,6 +145,25 @@ export default {
 
 	.icon-padrao{
 		margin: 0 0.5rem;
+	}
+
+	.card-top{
+		webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+		box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+	}
+
+	.button-info{
+		cursor: pointer;
+	}
+
+	.info-page{
+		position: fixed;
+		z-index: 9999;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100vh;
+		background: black;
 	}
 </style>
 
