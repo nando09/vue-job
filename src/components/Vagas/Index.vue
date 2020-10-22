@@ -26,20 +26,14 @@
 				</b-col>
 				<b-col class="vagas-card" md="2" sm="12">
 					<b-card align="center" class="card-top">
-						<b-button variant="success">Cadastrar</b-button>
-						<b-icon icon="exclamation-circle-fill" class="icon-button-info" scale="2" variant="warning" v-b-modal.modal-1></b-icon>
 					</b-card>
 				</b-col>
 				<b-col class="vagas-card" md="2" sm="12">
 					<b-card align="center" class="card-top">
-						<b-button variant="success">Cadastrar</b-button>
-						<b-icon icon="exclamation-circle-fill" class="icon-button-info" scale="2" variant="warning" v-b-modal.modal-1></b-icon>
 					</b-card>
 				</b-col>
 				<b-col class="vagas-card" md="2" sm="12">
 					<b-card align="center" class="card-top">
-						<b-button variant="success">Cadastrar</b-button>
-						<b-icon icon="exclamation-circle-fill" class="icon-button-info" scale="2" variant="warning" v-b-modal.modal-1></b-icon>
 					</b-card>
 				</b-col>
 				<b-col v-for="vaga in vagas" :key="vaga.id" class="vagas-card" md="3" sm="6">
@@ -127,13 +121,13 @@ export default {
 		showAlert() {
 			// this.$swal('Hello Vue world!!!');
 			this.$swal.fire({
-				title: 'Você realmente quer apagar essa vaga?',
-				text: "Irá excluir tudo relacionado a essa vaga e não poderá voltar atrás!",
+				title: 'Tem certeza?',
+				text: "Será excluido tudo!",
 				icon: 'warning',
 				showCancelButton: true,
-				confirmButtonColor: '#3085d6',
-				cancelButtonColor: '#d33',
-				confirmButtonText: 'Sim, pode excluir!'
+				confirmButtonColor: '#d33',
+				cancelButtonColor: '#3085d6',
+				confirmButtonText: 'Excluir!'
 			}).then((result) => {
 				if (result.isConfirmed) {
 					this.$swal.fire(
