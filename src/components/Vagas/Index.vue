@@ -2,9 +2,15 @@
 	<div class="conteudo">
 		<b-col>
 			<b-row>
-				<div class="info-page" v-if="informacao_pagina">
-					<p>Se apagar não volta!</p>
-				</div>
+				<b-modal id="modal-1" title="Informações" size="lg" hide-footer>
+					<small class="text-muted">Quando apagar uma vaga sera deletado todos informações sobre ela e os candidatos que se cadastraram!</small>
+					<br>
+					<small class="text-muted">Tenha muito atenção e veja o nome exato que deseja deleter!</small>
+					<br>
+					<small class="text-muted">A vaga fica ativa por 30 dias, quando passar dessa data sera deletada!</small>
+					<br>
+					<small class="text-muted">Caso queira que a vaga seja renovada, tem que renovar antes dos 30 dias!</small>
+				</b-modal>
 				<b-col class="vagas-card" md="4" sm="12">
 					<b-card align="center" class="card-top" header="Cantidatos" header-text-variant="white" header-bg-variant="info">
 						<b-card-text>Total de: {{candidatos_quantidade}} candidatos</b-card-text>
@@ -17,7 +23,7 @@
 				</b-col>
 				<b-col class="vagas-card" md="4" sm="12">
 					<b-card align="center" class="card-top" header="Informações (clique)" header-text-variant="white" header-bg-variant="info">
-						<b-icon icon="exclamation-circle-fill" class="button-info" scale="2" variant="warning" @click="toggleInfo()"></b-icon>
+						<b-icon icon="exclamation-circle-fill" class="icon-button-info" scale="2" variant="warning" v-b-modal.modal-1></b-icon>
 					</b-card>
 				</b-col>
 				<b-col v-for="vaga in vagas" :key="vaga.id" class="vagas-card" md="3" sm="6">
@@ -25,11 +31,9 @@
 						<b-card-text class="small text-muted">
 							<b-icon icon="info-circle-fill" variant="info" title="Já faz essa quantidade de dias que você publicou essa vaga!" class="icon-info"></b-icon>
 							{{ diasRestantes(vaga.data) }}
-
-
-						<footer class="blockquote-footer">
-							Candidatos: <cite title="Source Title"><b-badge variant="primary" pill v-if="vaga.candidatos_quantidade > 0">{{vaga.candidatos_quantidade}}</b-badge></cite>
-						</footer>
+							<footer class="blockquote-footer">
+								Candidatos: <cite title="Source Title"><b-badge variant="primary" pill v-if="vaga.candidatos_quantidade > 0">{{vaga.candidatos_quantidade}}</b-badge></cite>
+							</footer>
 						</b-card-text>
 						<template #footer>
 							<small class="text-muted">
@@ -125,11 +129,11 @@ export default {
 		},
 
 		toggleInfo(){
-			if (this.informacao_pagina) {
-				this.informacao_pagina = false;
-			}else{
-				this.informacao_pagina = true;
-			}
+			// if (this.informacao_pagina) {
+			// 	this.informacao_pagina = false;
+			// }else{
+			// 	this.informacao_pagina = true;
+			// }
 		}
 	}
 };
@@ -152,8 +156,17 @@ export default {
 		box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
 	}
 
-	.button-info{
+	.icon-button-info{
 		cursor: pointer;
+	}
+
+	.icon-button-info:focus{
+		outline: none;
+	}
+
+	.button-info{
+		background: transparent;
+		border-color: transparent;
 	}
 
 	.info-page{
@@ -164,6 +177,10 @@ export default {
 		width: 100%;
 		height: 100vh;
 		background: black;
+	}
+
+	#modal-1{
+		padding: 30px;
 	}
 </style>
 
