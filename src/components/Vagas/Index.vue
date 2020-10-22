@@ -48,7 +48,9 @@
 						<template #footer>
 							<small class="text-muted">
 								<b-icon icon="x-circle" scale="1.5" variant="danger" class="icon-padrao" @click="showAlert"></b-icon>
-								<b-icon icon="eye-fill" scale="1.5" class="icon-padrao"></b-icon>
+								<router-link :to="`/vagas/candidatos/${vaga.id}`">
+									<b-icon icon="eye-fill" scale="1.5" class="icon-padrao"></b-icon>
+								</router-link>
 								<b-icon icon="pencil-square" scale="1.5" class="icon-padrao"></b-icon>
 							</small>
 						</template>

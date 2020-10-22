@@ -58,6 +58,7 @@ export default {
 	computed: {
 	},
 	mounted() {
+		console.log(this.$route.params.id);
 		this.getCadidatos();
 	},
 	methods: {
