@@ -3,26 +3,42 @@
 		<b-col>
 			<b-row>
 				<b-modal id="modal-1" title="Informações" size="lg" hide-footer>
-					<small class="text-muted">Quando apagar uma vaga sera deletado todos informações sobre ela e os candidatos que se cadastraram!</small>
-					<br>
-					<small class="text-muted">Tenha muito atenção e veja o nome exato que deseja deleter!</small>
-					<br>
-					<small class="text-muted">A vaga fica ativa por 30 dias, quando passar dessa data sera deletada!</small>
-					<br>
-					<small class="text-muted">Caso queira que a vaga seja renovada, tem que renovar antes dos 30 dias!</small>
+					<p class="text-muted my-4">Quando apagar uma vaga sera deletado todos informações sobre ela e os candidatos que se cadastraram!</p>
+					<p class="text-muted my-4">Tenha muito atenção e veja o nome exato que deseja deleter!</p>
+					<p class="text-muted my-4">A vaga fica ativa por 30 dias, quando passar dessa data sera deletada!</p>
+					<p class="text-muted my-4">Caso queira que a vaga seja renovada, tem que renovar antes dos 30 dias!</p>
 				</b-modal>
-				<b-col class="vagas-card" md="4" sm="12">
+				<b-modal id="modal-2" title="Informações" size="lg" hide-footer>
+					<p class="text-muted my-4">Quando apagar uma vaga sera deletado todos informações sobre ela e os candidatos que se cadastraram!</p>
+					<p class="text-muted my-4">Tenha muito atenção e veja o nome exato que deseja deleter!</p>
+					<p class="text-muted my-4">A vaga fica ativa por 30 dias, quando passar dessa data sera deletada!</p>
+					<p class="text-muted my-4">Caso queira que a vaga seja renovada, tem que renovar antes dos 30 dias!</p>
+				</b-modal>
+				<b-col class="vagas-card" md="3" sm="12">
 					<b-card align="center" class="card-top" header="Cantidatos" header-text-variant="white" header-bg-variant="info">
 						<b-card-text>Total de: {{candidatos_quantidade}} candidatos</b-card-text>
 					</b-card>
 				</b-col>
-				<b-col class="vagas-card" md="4" sm="12">
+				<b-col class="vagas-card" md="3" sm="12">
 					<b-card align="center" class="card-top" header="Vagas ativas" header-text-variant="white" header-bg-variant="info">
 						<b-card-text>Vagas ativas: {{vagas_ativa_quantidade}}</b-card-text>
 					</b-card>
 				</b-col>
-				<b-col class="vagas-card" md="4" sm="12">
-					<b-card align="center" class="card-top" header="Informações (clique)" header-text-variant="white" header-bg-variant="info">
+				<b-col class="vagas-card" md="2" sm="12">
+					<b-card align="center" class="card-top">
+						<b-button variant="success">Cadastrar</b-button>
+						<b-icon icon="exclamation-circle-fill" class="icon-button-info" scale="2" variant="warning" v-b-modal.modal-1></b-icon>
+					</b-card>
+				</b-col>
+				<b-col class="vagas-card" md="2" sm="12">
+					<b-card align="center" class="card-top">
+						<b-button variant="success">Cadastrar</b-button>
+						<b-icon icon="exclamation-circle-fill" class="icon-button-info" scale="2" variant="warning" v-b-modal.modal-1></b-icon>
+					</b-card>
+				</b-col>
+				<b-col class="vagas-card" md="2" sm="12">
+					<b-card align="center" class="card-top">
+						<b-button variant="success">Cadastrar</b-button>
 						<b-icon icon="exclamation-circle-fill" class="icon-button-info" scale="2" variant="warning" v-b-modal.modal-1></b-icon>
 					</b-card>
 				</b-col>
@@ -45,6 +61,7 @@
 					</b-card>
 				</b-col>
 			</b-row>
+			<b-icon icon="plus-circle-fill" scale="3" class="icon-padrao create-vaga" v-b-modal.modal-2></b-icon>
 		</b-col>
 	</div>
 </template>
@@ -160,7 +177,7 @@ export default {
 		cursor: pointer;
 	}
 
-	.icon-button-info:focus{
+	.icon-button-info:focus, .create-vaga:focus{
 		outline: none;
 	}
 
@@ -179,7 +196,15 @@ export default {
 		background: black;
 	}
 
-	#modal-1{
+	.create-vaga{
+		position: fixed;
+		right: 2rem;
+		bottom: 2rem;
+		color: green;
+		cursor: pointer;
+	}
+
+	#modal-1, #modal-2{
 		padding: 30px;
 	}
 </style>
