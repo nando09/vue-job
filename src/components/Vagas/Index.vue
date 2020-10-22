@@ -2,7 +2,36 @@
 	<div class="conteudo">
 		<b-col>
 			<b-row>
-
+				<b-col class="vagas-card" md="4" sm="12">
+					<b-card
+						border-variant="primary"
+						header="Primary"
+						header-bg-variant="primary"
+						header-text-variant="white"
+						align="center">
+						<b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+					</b-card>
+				</b-col>
+				<b-col class="vagas-card" md="4" sm="12">
+					<b-card
+						border-variant="primary"
+						header="Primary"
+						header-bg-variant="primary"
+						header-text-variant="white"
+						align="center">
+						<b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+					</b-card>
+				</b-col>
+				<b-col class="vagas-card" md="4" sm="12">
+					<b-card
+						border-variant="primary"
+						header="Primary"
+						header-bg-variant="primary"
+						header-text-variant="white"
+						align="center">
+						<b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+					</b-card>
+				</b-col>
 				<b-col v-for="vaga in vagas" :key="vaga.id" class="vagas-card" md="3" sm="6">
 					<b-card :header="vaga.titulo">
 						<b-card-text class="small text-muted">
@@ -16,8 +45,9 @@
 						</b-card-text>
 						<template #footer>
 							<small class="text-muted">
-								<b-icon icon="x-circle" scale="1.5" variant="danger" class="icon-padrao"></b-icon>
+								<b-icon icon="x-circle" scale="1.5" variant="danger" class="icon-padrao" @click="showAlert"></b-icon>
 								<b-icon icon="eye-fill" scale="1.5" class="icon-padrao"></b-icon>
+								<b-icon icon="pencil-square" scale="1.5" class="icon-padrao"></b-icon>
 							</small>
 						</template>
 					</b-card>
@@ -78,6 +108,27 @@ export default {
 			}
 
 			return (diffDays - 1) + ' dias'
+		},
+
+		showAlert() {
+			// this.$swal('Hello Vue world!!!');
+			this.$swal.fire({
+				title: 'Você realmente quer apagar essa vaga?',
+				text: "Irá excluir tudo relacionado a essa vaga e não poderá voltar atrás!",
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Sim, pode excluir!'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					this.$swal.fire(
+						'Excluido!',
+						'Foi excluido tudo relacinado a essa vaga.',
+						'success'
+					)
+				}
+			})
 		}
 	}
 };
