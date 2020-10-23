@@ -14,6 +14,53 @@
 					<p class="text-muted my-4">A vaga fica ativa por 30 dias, quando passar dessa data sera deletada!</p>
 					<p class="text-muted my-4">Caso queira que a vaga seja renovada, tem que renovar antes dos 30 dias!</p>
 				</b-modal>
+				<b-modal id="modal-3" title="Cadastro de vaga" size="lg" hide-footer>
+				<b-form @submit="onSubmit" @reset="onReset" v-if="show">
+					<b-form-group
+						id="input-group-1"
+						label="Titulo:"
+						label-for="input-1"
+						description="Aqui será o nome do titulo aprensentado e pesquisado pelo candidato."
+					>
+						<b-form-input
+							id="input-1"
+							v-model="form.titulo"
+							required
+							placeholder="Titulo da vaga"
+						></b-form-input>
+					</b-form-group>
+
+					<b-form-group id="input-group-2" label="Quantidade:" label-for="input-2" description="Quantidade de numeros dessa vaga.">
+						<b-form-input
+							id="input-2"
+							v-model="form.quantidade"
+							type="number"
+							required
+							placeholder="Quantidade"
+						></b-form-input>
+					</b-form-group>
+
+					<b-form-group id="input-group-3" label="Categoria:" label-for="input-3">
+						<b-form-select
+							id="input-3"
+							v-model="form.categoria"
+							:options="categoria"
+							required
+						></b-form-select>
+					</b-form-group>
+					<b-form-textarea
+						v-model="form.descricao"
+						id="textarea-no-resize"
+						placeholder="Descrição da vaga. Pode falar dias que trabalhará, sobre o horario, salarios, beneficios, o que o canditato precisa ter, localicada da empresa, etc..."
+						rows="3"
+						no-resize
+					></b-form-textarea>
+					<div class="button-right">
+						<b-button type="reset" variant="danger">Limpar tudo!</b-button>
+						<b-button type="submit" variant="success">Salvar agora!</b-button>
+					</div>
+				</b-form>
+				</b-modal>
 				<b-col class="vagas-card" md="3" sm="12">
 					<b-card align="center" class="card-top" header="Cantidatos" header-text-variant="white" header-bg-variant="info">
 						<b-card-text>Total de: {{candidatos_quantidade}} candidatos</b-card-text>
@@ -47,17 +94,17 @@
 						</b-card-text>
 						<template #footer>
 							<small class="text-muted">
-								<b-icon icon="x-circle" scale="1.5" variant="danger" class="icon-padrao" @click="showAlert"></b-icon>
+								<b-icon icon="x-circle" scale="1.5" variant="danger" class="icon-default" @click="showAlert"></b-icon>
 								<router-link :to="`/vagas/candidatos/${vaga.id}`">
-									<b-icon icon="eye-fill" scale="1.5" class="icon-padrao"></b-icon>
+									<b-icon icon="eye-fill" scale="1.5" class="icon-default"></b-icon>
 								</router-link>
-								<b-icon icon="pencil-square" scale="1.5" class="icon-padrao"></b-icon>
+								<b-icon icon="pencil-square" scale="1.5" class="icon-default" v-b-modal.modal-3 @click="changeVacancy(vaga.id)"></b-icon>
 							</small>
 						</template>
 					</b-card>
 				</b-col>
 			</b-row>
-			<b-icon icon="plus-circle-fill" scale="3" class="icon-padrao create-vaga" v-b-modal.modal-2></b-icon>
+			<b-icon icon="plus-circle-fill" scale="3" class="icon-default create-vaga" v-b-modal.modal-2></b-icon>
 		</b-col>
 	</div>
 </template>
@@ -76,7 +123,22 @@ export default {
 			vagas: [],
 			candidatos_quantidade: '',
 			vagas_ativa_quantidade: '',
-			informacao_pagina: false
+			informacao_pagina: false,
+
+			form: {
+				titulo: '',
+				quantidade: '',
+				categoria: null,
+				descricao: ''
+			},
+			categoria: [
+				{ 	text: 'Selecione uma categoria', value: null },
+				{	text: 'Engenheiro', value: 1},
+				{	text: 'TI', value: 2},
+				{	text: 'Administração', value: 3},
+				{	text: 'Lider', value: 4}
+			],
+			show: true
 		}
 	},
 	computed: {
@@ -141,12 +203,34 @@ export default {
 			})
 		},
 
-		toggleInfo(){
+		changeVacancy(id){
+			console.log(id);
 			// if (this.informacao_pagina) {
 			// 	this.informacao_pagina = false;
 			// }else{
 			// 	this.informacao_pagina = true;
 			// }
+		},
+
+
+
+		onSubmit(evt) {
+			evt.preventDefault()
+			alert(JSON.stringify(this.form))
+		},
+
+		onReset(evt) {
+			evt.preventDefault()
+			// Reset our form values
+			this.form.email = ''
+			this.form.name = ''
+			this.form.food = null
+			this.form.checked = []
+			// Trick to reset/clear native browser form validation state
+			this.show = false
+			this.$nextTick(() => {
+				this.show = true
+			})
 		}
 	}
 };
@@ -160,7 +244,7 @@ export default {
 		margin: 0 5px;
 	}
 
-	.icon-padrao{
+	.icon-default{
 		margin: 0 0.5rem;
 	}
 
@@ -169,11 +253,11 @@ export default {
 		box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
 	}
 
-	.icon-button-info{
+	.icon-button-info, .create-vaga, .icon-default{
 		cursor: pointer;
 	}
 
-	.icon-button-info:focus, .create-vaga:focus{
+	.icon-button-info:focus, .create-vaga:focus, .icon-default:focus{
 		outline: none;
 	}
 
@@ -197,10 +281,18 @@ export default {
 		right: 2rem;
 		bottom: 2rem;
 		color: green;
-		cursor: pointer;
 	}
 
-	#modal-1, #modal-2{
+	.button-right{
+		margin-top: 10px;
+		float: right;
+	}
+
+	.button-right button{
+		margin-left: 10px;
+	}
+
+	#modal-1, #modal-2, #modal-3{
 		padding: 30px;
 	}
 </style>

@@ -45,5 +45,11 @@
 	" comentários " : [ 
 		{ " id " : 1 , " body " : " algum comentário " , " postId " : 1 }       
 	] ,
+	"categoria_vaga": [
+		{"text": 1, "value": "Engenheiro"},
+		{"text": 2, "value": "TI"},
+		{"text": 3, "value": "Administração"},
+		{"text": 4, "value": "Lider"}
+	],
 	" profile " : { " name " : " typicode " }    
 }
