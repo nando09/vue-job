@@ -19,17 +19,27 @@
 								<p class="comentario">{{candidato.descricao || 'Não tem nenhum comentário!' }}</p>
 								<span class="objetivo"><strong>Objetivo:</strong> {{candidato.objetivo}}</span>
 							</b-card-text></b-tab>
-							<b-tab title="Cursos"><b-card-text>
-								<b-list-group>
-									<b-list-group-item href="#" disabled class="flex-column align-items-start" v-for="curso in candidato.cursos" :key="curso.id">
-										<div class="d-flex w-100 justify-content-between">
-											<h5 class="mb-1">{{curso.instituicao}} - {{curso.nome}}</h5>
-											<small class="text-muted"><strong>Inicio:</strong>{{curso.inicio}} <strong>Fim:</strong>{{curso.fim}} - {{curso.status}}</small>
-										</div>
-									</b-list-group-item>
+							<b-tab title="Cursos">
+								<b-card-text>
+									<b-list-group>
+										<b-list-group-item href="#" disabled class="flex-column align-items-start" v-for="curso in candidato.cursos" :key="curso.id">
+											<div class="d-flex w-100 justify-content-between">
+												<h5 class="mb-1">{{curso.instituicao}} - {{curso.nome}}</h5>
+												<small class="text-muted"><strong>Inicio:</strong>{{curso.inicio}} <strong>Fim:</strong>{{curso.fim}} - {{curso.status}}</small>
+											</div>
+										</b-list-group-item>
+									</b-list-group>
+								</b-card-text>
+							</b-tab>
+							<b-tab title="Escolaridade">
+								<b-list-group horizontal>
+										<b-col v-for="escolaridade in candidato.escolaridade" :key="escolaridade.id">
+											<b-list-group-item>
+												<p>Tipo: <strong>{{escolaridade.tipo}}</strong></p>
+											</b-list-group-item>
+										</b-col>
 								</b-list-group>
-							</b-card-text></b-tab>
-							<b-tab title="Escolaridade"><b-card-text>Escolaridade</b-card-text></b-tab>
+							</b-tab>
 							<b-tab title="Informações"><b-card-text>Informações</b-card-text></b-tab>
 						</b-tabs>
 					</b-card>
