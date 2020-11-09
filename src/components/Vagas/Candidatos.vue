@@ -32,15 +32,29 @@
 								</b-card-text>
 							</b-tab>
 							<b-tab title="Escolaridade">
-								<b-list-group horizontal>
-										<b-col v-for="escolaridade in candidato.escolaridade" :key="escolaridade.id">
+								<b-list-group>
+									<b-row>
+										<b-col cols="4" class="escolaridade" v-for="escolaridade in candidato.escolaridade" :key="escolaridade.id">
 											<b-list-group-item>
-												<p>Tipo: <strong>{{escolaridade.tipo}}</strong></p>
+												<strong>{{ tipoEscola[escolaridade.tipo] }}</strong>
+												<p>{{ escolaridade.nome }}</p>
+												<p v-if="escolaridade.tipo != 0">{{ escolaridade.curso }}</p>
+												<p>{{ escolaridade.status }}</p>
+												<p>{{ escolaridade.conclusao }}</p>
 											</b-list-group-item>
 										</b-col>
+									</b-row>
 								</b-list-group>
 							</b-tab>
-							<b-tab title="Informações"><b-card-text>Informações</b-card-text></b-tab>
+							<b-tab title="Informações">
+								<p>{{candidato.email}}</p>
+								<p>{{candidato.telefone}}</p>
+								<p>{{candidato.nascimento}}</p>
+								<p>{{candidato.estado}}</p>
+								<p>{{candidato.cidade}}</p>
+								<p>{{candidato.whats}}</p>
+								<p>{{candidato.skype}}</p>
+							</b-tab>
 						</b-tabs>
 					</b-card>
 				</b-col>
@@ -63,6 +77,13 @@ export default {
 		return {
 			candidatos: [],
 			candidato: 0,
+			tipoEscola: {
+				1:'Ensino médio',
+				2:'Graduação',
+				3:'Pós-graduação',
+				4:'Mestrado',
+				5:'Doutorado'
+			},
 		}
 	},
 	computed: {
@@ -136,5 +157,9 @@ export default {
 
 	.objetivo{
 		border-bottom: 2px solid #86aaaf;
+	}
+
+	.escolaridade{
+		margin-bottom: 20px;
 	}
 </style>
