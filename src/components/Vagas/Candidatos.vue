@@ -6,8 +6,8 @@
 					<b-list-group-item class="d-flex align-items-center candidato" v-for="candidato in candidatos" :key="candidato.id">
 						<b-avatar variant="info" :src="'data:image/jpeg;base64,' + candidato.image" class="mr-3"></b-avatar>
 						<span class="mr-auto" :title="candidato.nome">{{candidato.nome.substring(0,10)}}</span>
-						<b-icon class="icon" icon="bookmark-fill" title="Favorito" v-if="candidato.favorito == 1"></b-icon>
-						<b-icon class="icon" icon="bookmark" v-else></b-icon>
+						<b-icon class="icon" icon="bookmark-fill" title="Favorito" v-if="candidato.favorito == 1" @click="favoritar(false)"></b-icon>
+						<b-icon class="icon" icon="bookmark" @click="favoritar(true)" v-else></b-icon>
 						<b-icon class="icon icon-view" icon="aspect-ratio" title="Ver candidato"  @click="buscarCanditato(candidato.id)"></b-icon>
 					</b-list-group-item>
 				</b-col>
@@ -108,6 +108,10 @@ export default {
 				console.log(e);
 				alert("servidor fora de área");
 			});
+		},
+
+		favoritar(dados){
+			console.log(dados);
 		},
 
 		buscarCanditato(id_cadidato){
