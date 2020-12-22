@@ -6,8 +6,8 @@
 					<b-list-group-item class="d-flex align-items-center candidato" v-for="candidato in candidatos" :key="candidato.id">
 						<b-avatar variant="info" :src="'data:image/jpeg;base64,' + candidato.image" class="mr-3"></b-avatar>
 						<span class="mr-auto" :title="candidato.nome">{{candidato.nome.substring(0,10)}}</span>
-						<b-icon class="icon" icon="bookmark-fill" title="Favorito" v-if="candidato.favorito == 1" @click="favoritar(false)"></b-icon>
-						<b-icon class="icon" icon="bookmark" @click="favoritar(true)" v-else></b-icon>
+						<b-icon class="icon" icon="bookmark-fill" title="Favorito" v-if="candidato.favorito == 1"></b-icon>
+						<b-icon class="icon" icon="bookmark" v-else></b-icon>
 						<b-icon class="icon icon-view" icon="aspect-ratio" title="Ver candidato"  @click="buscarCanditato(candidato.id)"></b-icon>
 					</b-list-group-item>
 				</b-col>
@@ -47,13 +47,34 @@
 								</b-list-group>
 							</b-tab>
 							<b-tab title="Informações">
-								<p>{{candidato.email}}</p>
-								<p>{{candidato.telefone}}</p>
-								<p>{{candidato.nascimento}}</p>
-								<p>{{candidato.estado}}</p>
-								<p>{{candidato.cidade}}</p>
-								<p>{{candidato.whats}}</p>
-								<p>{{candidato.skype}}</p>
+								<b-row>
+									<b-col cols="4">
+										<p>{{candidato.email}}</p>
+										<p>{{candidato.telefone}}</p>
+										<p>{{candidato.nascimento}}</p>
+										<p>{{candidato.estado}}</p>
+										<p>{{candidato.cidade}}</p>
+										<p>{{candidato.whats}}</p>
+										<p>{{candidato.skype}}</p>
+
+										<b-button v-if="candidato.favorito == 1" variant="danger" size="sm" class="mb-2" @click="favoritar(candidato)">
+											<b-icon class="icon icon-view" icon="hand-thumbs-down" title="Favorito" aria-hidden="true"></b-icon>
+										</b-button>
+										<b-button v-else variant="success" size="sm" class="mb-2" @click="favoritar(candidato)">
+											<b-icon class="icon icon-view" icon="hand-thumbs-up" aria-hidden="true"></b-icon>
+										</b-button>
+									</b-col>
+									<b-col cols="8">
+										<p>Quer mandar uma mensagem?</p>
+										<b-form-textarea
+											id="textarea-rows"
+											placeholder="Escreva uma mensagem para o candidato aqui!"
+											rows="8"
+										></b-form-textarea>
+										<br>
+										<b-button variant="success">Enviar</b-button>
+									</b-col>
+								</b-row>
 							</b-tab>
 						</b-tabs>
 					</b-card>
@@ -111,7 +132,29 @@ export default {
 		},
 
 		favoritar(dados){
-			console.log(dados);
+			let favorito;
+			if (dados.favorito) {
+				dados.favorito = 0;
+				favorito = 0;
+			}else{
+				dados.favorito = 1;
+				favorito = 1;
+			}
+
+			// axios.put("http://localhost:3000/candidatos/" + dados.id, data, {
+			// 	headers: {
+			// 		"Content-Type": "application/json",
+			// 	}
+			// })
+			// .then(response => {
+			// 	// this.candidato = response.data;
+			// 	console.log(response);
+			// 	this.getCadidatos();
+			// })
+			// .catch(e => {
+			// 	console.log(e);
+			// 	alert("servidor fora de área");
+			// });
 		},
 
 		buscarCanditato(id_cadidato){

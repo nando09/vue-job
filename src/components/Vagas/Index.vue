@@ -15,57 +15,59 @@
 					<p class="text-muted my-4">Caso queira que a vaga seja renovada, tem que renovar antes dos 30 dias!</p>
 				</b-modal>
 				<b-modal id="modal-3" title="Cadastro de vaga" size="lg" hide-footer>
-				<b-form @submit="onSubmit" @reset="onReset" v-if="show">
-					<b-row>
-						<b-col cols="8">
-							<b-form-group
-								id="input-group-1"
-								label="Titulo:"
-								label-for="input-1"
-								description="Aqui será o nome do titulo aprensentado e pesquisado pelo candidato."
-							>
-								<b-form-input
-									id="input-1"
-									v-model="form.titulo"
-									required
-									placeholder="Titulo da vaga"
-								></b-form-input>
-							</b-form-group>
-						</b-col>
+					<b-form @submit="onSubmit" @reset="onReset" v-if="show">
+						<b-row>
+							<b-col cols="8">
+								<b-form-group
+									id="input-group-1"
+									label="Titulo:"
+									label-for="input-1"
+									description="Aqui será o nome do titulo aprensentado e pesquisado pelo candidato."
+								>
+									<b-form-input
+										id="input-1"
+										v-model="form.titulo"
+										required
+										placeholder="Titulo da vaga"
+									></b-form-input>
+								</b-form-group>
+							</b-col>
 
-						<b-col cols="4">
-							<b-form-group id="input-group-2" label="Quantidade:" label-for="input-2" description="Quantidade de numeros dessa vaga.">
-								<b-form-input
-									id="input-2"
-									v-model="form.quantidade"
-									type="number"
-									required
-									placeholder="Quantidade"
-								></b-form-input>
-							</b-form-group>
-						</b-col>
-					</b-row>
+							<b-col cols="4">
+								<b-form-group id="input-group-2" label="Quantidade:" label-for="input-2" description="Quantidade de numeros dessa vaga.">
+									<b-form-input
+										id="input-2"
+										v-model="form.quantidade"
+										type="number"
+										required
+										placeholder="Quantidade"
+									></b-form-input>
+								</b-form-group>
+							</b-col>
+						</b-row>
 
-					<b-form-group id="input-group-3" label="Categoria:" label-for="input-3">
-						<b-form-select
-							id="input-3"
-							v-model="form.categoria"
-							:options="categoria"
-							required
-						></b-form-select>
-					</b-form-group>
-					<b-form-textarea
-						v-model="form.descricao"
-						id="textarea-no-resize"
-						placeholder="Descrição da vaga. Pode falar dias que trabalhará, sobre o horario, salarios, beneficios, o que o canditato precisa ter, localicada da empresa, etc..."
-						rows="3"
-						no-resize
-					></b-form-textarea>
-					<div class="button-right">
-						<b-button type="reset" variant="danger">Limpar tudo!</b-button>
-						<b-button type="submit" variant="success">Salvar agora!</b-button>
-					</div>
-				</b-form>
+						<b-form-group id="input-group-3" label="Categoria:" label-for="input-3">
+							<b-form-select
+								id="input-3"
+								v-model="form.categoria"
+								:options="categoria"
+								required
+							></b-form-select>
+						</b-form-group>
+						<b-form-textarea
+							v-model="form.descricao"
+							id="textarea-no-resize"
+							placeholder="Descrição da vaga. Pode falar dias que trabalhará, sobre o horario, salarios, beneficios, o que o canditato precisa ter, localicada da empresa, etc..."
+							rows="3"
+							no-resize
+						></b-form-textarea>
+						
+						<div class="button-right">
+							<b-button variant="info">Adicionar beneficio!</b-button>
+							<b-button type="reset" variant="danger">Limpar tudo!</b-button>
+							<b-button type="submit" variant="success">Salvar agora!</b-button>
+						</div>
+					</b-form>
 				</b-modal>
 				<b-col class="vagas-card" md="3" sm="12">
 					<b-card align="center" class="card-top" header="Cantidatos" header-text-variant="white" header-bg-variant="info">
