@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import EmptyViewRouter from "@/components/EmptyViewRouter";
 
-import Home from "../views/Home.vue";
+import Home from "../views/Home/Home.vue";
 import Index from "../views/Home/Index.vue";
 import Vagas from "../views/Vagas/Vagas.vue";
 import Candidatos from "../views/Vagas/Candidatos.vue";

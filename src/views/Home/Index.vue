@@ -1,22 +1,16 @@
 <template>
 	<div class="home">
-		<Topo></Topo>
-		<Lateral></Lateral>
-		<Index></Index>
+		<Login></Login>
 	</div>
 </template>
 
 <script>
-import Lateral from '@/components/Menus/Lateral.vue';
-import Topo from '@/components/Menus/Topo.vue';
-import Index from '@/components/Home/Index.vue';
+import Login from '@/components/Home/Login.vue';
 
 export default {
 	name: "Index",
 	components: {
-		Lateral,
-		Topo,
-		Index
+		Login
 	}
 };
 </script>
